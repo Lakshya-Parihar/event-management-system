@@ -1,0 +1,15 @@
+.rotating-gradient {
+    background: conic-gradient(from 0deg, #6366f1, #8b5cf6, #6366f1);
+    animation: spin 4s linear infinite;
+    background-size: 200% 200%;
+    transition: background 0.5s ease;
+  }
+  
+  @keyframes spin {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
