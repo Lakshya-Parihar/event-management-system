@@ -5,129 +5,130 @@ import { ToastContainer, toast } from "react-toastify";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Pages/Sidebar";
-import { FaUsers, FaUserTie, FaCalendarAlt, FaComments } from "react-icons/fa";
+import { FaUsers, FaUserTie, FaCalendarAlt, FaComments, FaCheckCircle, FaExclamationCircle, FaClock } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 
 const DashboardCard = ({ title, count }) => {
   const iconMap = {
-    Users: <FaUsers className="text-4xl text-blue-600" />,
-    Organizers: <FaUserTie className="text-4xl text-green-600" />,
-    "Total Events": <FaCalendarAlt className="text-4xl text-purple-600" />,
-    "Support/Feedback": <FaComments className="text-4xl text-pink-600" />,
+    Users: <FaUsers className="text-3xl text-blue-500" />,
+    Organizers: <FaUserTie className="text-3xl text-emerald-500" />,
+    "Total Events": <FaCalendarAlt className="text-3xl text-indigo-500" />,
+    "Support/Feedback": <FaComments className="text-3xl text-rose-500" />,
   };
 
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      className="bg-white p-6 rounded-2xl shadow text-center"
+      whileHover={{ y: -5 }}
+      className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center"
     >
-      <div className="flex justify-center items-center mb-4">
-        {iconMap[title] || <FaUsers className="text-4xl text-gray-600" />}
+      <div className="p-4 bg-gray-50 rounded-2xl mb-4">
+        {iconMap[title] || <FaUsers className="text-3xl text-gray-400" />}
       </div>
-      <div className="mb-2 text-xl font-semibold">{title}</div>
-      {count !== undefined && (
-        <p className="text-lg font-bold text-gray-700">{count}</p>
-      )}
-      <p className="text-sm text-gray-500 mt-1">Mikal andhbhaat</p>
+      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider">{title}</h3>
+      <p className="text-3xl font-bold text-gray-900 mt-1">{count ?? 0}</p>
     </motion.div>
   );
 };
 
 const ToDoCard = () => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="bg-white p-6 rounded-2xl shadow"
-  >
-    <h3 className="text-lg font-bold mb-4">To do list</h3>
-    <div className="mb-2 p-4 bg-black text-white rounded-xl">
-      <p>Create a digital logo for a small business</p>
-      <p className="text-xs mt-1">Low - David Wilson</p>
+  <motion.div whileHover={{ scale: 1.02 }} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+    <div className="flex justify-between items-center mb-6">
+      <h3 className="text-lg font-bold text-gray-800">Pending Actions</h3>
+      <span className="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full">4 Urgent</span>
     </div>
-    <div className="p-4 bg-blue-100 rounded-xl">
-      <p>Design a packaging concept for a new product</p>
-      <p className="text-xs mt-1">High - Rachel Lee</p>
+    <div className="space-y-4">
+      <div className="flex items-start gap-3 p-3 bg-rose-50 rounded-2xl border border-rose-100">
+        <FaExclamationCircle className="text-rose-500 mt-1" />
+        <div>
+          <p className="text-sm font-semibold text-gray-800">Approve Tech-Con Venue</p>
+          <p className="text-xs text-rose-600">High Priority • Operations</p>
+        </div>
+      </div>
+      <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-2xl border border-blue-100">
+        <FaClock className="text-blue-500 mt-1" />
+        <div>
+          <p className="text-sm font-semibold text-gray-800">Review Vendor Contracts</p>
+          <p className="text-xs text-blue-600">Due Today • Legal</p>
+        </div>
+      </div>
     </div>
   </motion.div>
 );
 
 const AssignmentCard = () => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="bg-white p-6 rounded-2xl shadow"
-  >
-    <h3 className="text-lg font-bold mb-4">My assignments</h3>
-    <div className="mb-4">
-      <p>Graphic test</p>
-      <p className="text-sm text-gray-500">
-        25 March, 10:30 AM | Duration: 2h 45m
-      </p>
-      <div className="w-full bg-gray-200 h-2 rounded-full mt-2">
-        <div
-          className="bg-lime-400 h-2 rounded-full"
-          style={{ width: "90%" }}
-        ></div>
+  <motion.div whileHover={{ scale: 1.02 }} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+    <h3 className="text-lg font-bold text-gray-800 mb-6">Event Readiness</h3>
+    <div className="space-y-5">
+      <div>
+        <div className="flex justify-between mb-1 text-sm font-medium">
+          <span>Annual Gala Setup</span>
+          <span className="text-emerald-600">92%</span>
+        </div>
+        <div className="w-full bg-gray-100 h-2 rounded-full">
+          <div className="bg-emerald-500 h-2 rounded-full" style={{ width: "92%" }}></div>
+        </div>
       </div>
-    </div>
-    <div>
-      <p>Market research test</p>
-      <p className="text-sm text-gray-500">
-        14 April, 12:30 AM | Duration: 4h 15m
-      </p>
-      <div className="w-full bg-gray-200 h-2 rounded-full mt-2">
-        <div
-          className="bg-yellow-300 h-2 rounded-full"
-          style={{ width: "50%" }}
-        ></div>
+      <div>
+        <div className="flex justify-between mb-1 text-sm font-medium">
+          <span>Sports Meet Registration</span>
+          <span className="text-amber-500">45%</span>
+        </div>
+        <div className="w-full bg-gray-100 h-2 rounded-full">
+          <div className="bg-amber-400 h-2 rounded-full" style={{ width: "45%" }}></div>
+        </div>
       </div>
     </div>
   </motion.div>
 );
 
 const ScheduleCard = () => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="bg-white p-6 rounded-2xl shadow"
-  >
-    <h3 className="text-lg font-bold mb-4">April 2021</h3>
-    <p className="mb-2">19 April - Team meeting 10:30–12:00</p>
-    <p>19 April - Meeting with supervisor 12:30–13:10</p>
+  <motion.div whileHover={{ scale: 1.02 }} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+    <h3 className="text-lg font-bold text-gray-800 mb-6">Today's Briefing</h3>
+    <div className="space-y-4">
+      <div className="border-l-4 border-indigo-500 pl-4">
+        <p className="text-sm font-bold">Organizer Sync-up</p>
+        <p className="text-xs text-gray-500">09:00 AM - Conference Room A</p>
+      </div>
+      <div className="border-l-4 border-gray-200 pl-4">
+        <p className="text-sm font-bold">Venue Security Audit</p>
+        <p className="text-xs text-gray-500">02:30 PM - Main Stadium</p>
+      </div>
+    </div>
   </motion.div>
 );
 
 const NotificationCard = () => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="bg-white p-6 rounded-2xl shadow"
-  >
-    <h3 className="text-lg font-bold mb-4">Notifications</h3>
-    <p className="text-sm text-gray-500">Upcoming event</p>
-    <p className="font-semibold mt-1">
-      Product design meeting - 20 April, 11AM
-    </p>
+  <motion.div whileHover={{ scale: 1.02 }} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+    <h3 className="text-lg font-bold text-gray-800 mb-4">System Alerts</h3>
+    <div className="flex items-center gap-4">
+      <div className="h-10 w-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+        <FaCalendarAlt />
+      </div>
+      <div>
+        <p className="text-sm font-bold text-gray-800">New Event Request</p>
+        <p className="text-xs text-gray-500">"International Research Seminar" submitted by Dr. Smith.</p>
+      </div>
+    </div>
   </motion.div>
 );
 
 const BoardMeetingCard = () => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="bg-white p-6 rounded-2xl shadow"
-  >
-    <h3 className="text-lg font-bold mb-4">Board meeting</h3>
-    <p>24 March, 4:00 PM</p>
-    <p>Meeting with Ann Perkins, room 15</p>
-    <div className="mt-2 space-x-2">
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        className="px-4 py-1 bg-lime-300 rounded"
-      >
-        Accept invite
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        className="px-4 py-1 bg-gray-200 rounded"
-      >
-        Reschedule
-      </motion.button>
+  <motion.div whileHover={{ scale: 1.02 }} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+    <h3 className="text-lg font-bold text-gray-800 mb-4">Admin Council Meeting</h3>
+    <div className="flex justify-between items-start mb-4">
+      <div>
+        <p className="text-sm font-semibold">Budget Approval 2026</p>
+        <p className="text-xs text-gray-500">Tomorrow • 11:00 AM • Virtual</p>
+      </div>
+      <FaCheckCircle className="text-emerald-500" />
+    </div>
+    <div className="flex gap-2">
+      <button className="flex-1 py-2 bg-gray-900 text-white text-xs font-bold rounded-xl hover:bg-gray-800 transition-colors">
+        Join Call
+      </button>
+      <button className="flex-1 py-2 border border-gray-200 text-gray-600 text-xs font-bold rounded-xl hover:bg-gray-50 transition-colors">
+        Agenda
+      </button>
     </div>
   </motion.div>
 );
@@ -135,6 +136,10 @@ const BoardMeetingCard = () => (
 export default function AdminDashboard() {
   const navigate = useNavigate();
   const [admin, setAdmin] = useState(null);
+  const [contact, setContact] = useState([]);
+  const [orgs, setOrgs] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("adminToken");
@@ -150,140 +155,91 @@ export default function AdminDashboard() {
     }
   }, [navigate]);
 
-  // Contact Part Starts
-  const [contact, setContact] = useState([]);
-
   useEffect(() => {
     fetchContact();
+    fetchOrgs();
+    fetchEvents();
+    fetchUsers();
   }, []);
 
   const fetchContact = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost/EMS/backend/Admin/fetch_contactus.php"
-      );
+      const res = await axios.get("http://localhost/EMS/backend/Admin/fetch_contactus.php");
       setContact(res.data);
     } catch (err) {
-      console.error("Error fetching contacts:", err);
       toast.error("Failed to load contacts.");
     }
   };
-  // Contact Part Ends
-
-  // Organizers Part Starts
-
-  const [orgs, setOrgs] = useState([]);
-
-  useEffect(() => {
-    fetchOrgs();
-  }, []);
 
   const fetchOrgs = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost/EMS/backend/Admin/get_orgs.php"
-      );
-      if (res.data.success) {
-        setOrgs(res.data.orgs);
-      } else {
-        toast.error("No Organizers Found");
-      }
+      const res = await axios.get("http://localhost/EMS/backend/Admin/get_orgs.php");
+      if (res.data.success) setOrgs(res.data.orgs);
     } catch (error) {
-      console.error("Error fetching users:", error);
       toast.error("Error Fetching Organizers");
     }
   };
-  // Org Part Ends
-
-  // event Part start
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    fetchEvents();
-  }, []);
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost/EMS/backend/Admin/get_events.php"
-      );
-      if (res.data.success) {
-        setEvents(res.data.events);
-      } else {
-        toast.error("No Events Found");
-      }
+      const res = await axios.get("http://localhost/EMS/backend/Admin/get_events.php");
+      if (res.data.success) setEvents(res.data.events);
     } catch (error) {
-      console.error("Error fetching Events:", error);
       toast.error("No Events Found");
     }
   };
-  // events Part Ends
-
-  // Users Part Start
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost/EMS/backend/Organizer/get_users.php"
-      );
-      if (res.data.success) {
-        setUsers(res.data.users);
-      } else {
-        toast.error("No Users Found");
-      }
+      const res = await axios.get("http://localhost/EMS/backend/Organizer/get_users.php");
+      if (res.data.success) setUsers(res.data.users);
     } catch (error) {
-      console.error("Error fetching users:", error);
       toast.error("No Users Found");
     }
   };
-  // Users Part Ends
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-lime-50 via-white to-lime-100 text-[#1a1a1a]">
-      {/* Sidebar */}
+    <div className="flex min-h-screen bg-[#fcfdfd] text-[#1a1a1a]">
+      <ToastContainer position="top-right" autoClose={3000} />
+      
+      {/* Sidebar - Integrated with consistent border/shadow */}
       <motion.div
-        initial={{ x: -100, opacity: 0 }}
+        initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="w-1/5 bg-white shadow-lg p-6 rounded-r-3xl"
+        className="w-1/5 bg-white border-r border-gray-100 p-6"
       >
         <Sidebar />
       </motion.div>
 
       {/* Main Dashboard */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="w-4/5 p-10 overflow-y-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="w-4/5 p-12 overflow-y-auto"
       >
-        <h1 className="text-4xl font-bold mb-2">
-          Hi, {admin?.username}! <span className="text-yellow-500">👀</span>
-        </h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Is your day{" "}
-          <span className="text-yellow-500 font-semibold">going well?</span>
-        </p>
+        <header className="mb-10">
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+            Welcome back, {admin?.username || "Admin"}
+          </h1>
+        </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <DashboardCard title="Users" count={users.length} />
           <DashboardCard title="Organizers" count={orgs.length} />
           <DashboardCard title="Total Events" count={events.length} />
           <DashboardCard title="Support/Feedback" count={contact.length} />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {/* Mid Section Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
           <ToDoCard />
           <AssignmentCard />
           <ScheduleCard />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Bottom Section Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <NotificationCard />
           <BoardMeetingCard />
         </div>
